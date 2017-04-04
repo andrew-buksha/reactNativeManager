@@ -10,6 +10,7 @@ import {
 import LoginForm from './components/LoginForm';
 import EmployeeList from './components/EmployeeList';
 import CreateEmployee from './components/CreateEmployee';
+import EditEmployee from './components/EditEmployee';
 
 const RouterComponent = () => {
     return (
@@ -27,6 +28,7 @@ const RouterComponent = () => {
                     initial
                 />
                 <Scene key="createEmployee" component={CreateEmployee} title="Create Employee"/>
+                <Scene key="editEmployee" component={EditEmployee} title="Edit Employee"/>
             </Scene>
         </Router>
     );

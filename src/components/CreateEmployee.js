@@ -8,15 +8,11 @@ import {
     employeeCreate
 } from '../actions';
 import {
-    Picker,
-    Text
-} from 'react-native';
-import {
     Card,
     CardSection,
-    Input,
     Button
 } from './common';
+import EmployeeForm from './EmployeeForm';
 
 class EmployeeCreate extends Component {
     onButtonPress() {
@@ -26,46 +22,11 @@ class EmployeeCreate extends Component {
     };
 
     render() {
-        console.log(this.props.employee);
         return (
             <Card>
+                <EmployeeForm {...this.props} />
                 <CardSection>
-                    <Input
-                        labelText="Name"
-                        placeholder="Jane"
-                        value={this.props.name}
-                        onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}
-                    />
-                </CardSection>
-                <CardSection>
-                    <Input
-                        labelText="Phone"
-                        placeholder="555-555-5555"
-                        value={this.props.phone}
-                        onChangeText={value => this.props.employeeUpdate({ prop: 'phone', value })}
-                    />
-                </CardSection>
-                <CardSection style={{ flexDirection: 'column' }}>
-                    <Text style={styles.pickerTextStyle}>
-                        Select a shift:
-                    </Text>
-                    <Picker
-                        selectedValue={this.props.shift}
-                        onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
-                    >
-                        <Picker.Item label="Monday" value=""/>
-                        <Picker.Item label="Tuesday" value="Tuesday"/>
-                        <Picker.Item label="Wednesday" value="Wednesday"/>
-                        <Picker.Item label="Thursday" value="Thursday"/>
-                        <Picker.Item label="Friday" value="Friday"/>
-                        <Picker.Item label="Saturday" value="Saturday"/>
-                        <Picker.Item label="Sunday" value="Sunday"/>
-                    </Picker>
-                </CardSection>
-                <CardSection>
-                    <Button
-                        onPress={this.onButtonPress.bind(this)}
-                    >
+                    <Button onPress={this.onButtonPress.bind(this)}>
                         Create
                     </Button>
                 </CardSection>
@@ -73,13 +34,6 @@ class EmployeeCreate extends Component {
         );
     }
 }
-
-const styles = {
-    pickerTextStyle: {
-        fontSize: 18,
-        paddingLeft: 20
-    }
-};
 
 const mapStateToProps = (state) => {
     const { name, phone, shift } = state.employeeForm;
